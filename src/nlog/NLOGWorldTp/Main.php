@@ -18,7 +18,7 @@ class Main extends PluginBase implements Listener{
     	$this->getLogger()->info(TextFormat::AQUA . "Made by NLOG (nlog.kro.kr)");
  	 }
  	 
- 	 public function onCommand(CommandSender $sender,Command $cmd, $label,array $args) {
+ 	 public function onCommand(CommandSender $sender,Command $cmd,string $label,array $args): bool {
  	 	
  	 	$prefix = "§o§b[ 알림 ] §7";
  	 	
@@ -112,6 +112,7 @@ class Main extends PluginBase implements Listener{
  	 			$sender->sendMessage($prefix."월드명 : ".$name."§f | §7이 월드에 접속한 플레이어 수 : ".$player);
  	 		}
  	 	}
+		 return true;
  	 }
   }
 ?>
