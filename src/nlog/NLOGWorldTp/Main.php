@@ -92,7 +92,7 @@ class Main extends PluginBase implements Listener{
  	 		foreach ($this->getServer()->getLevelManager()->getLevels() as $level) {
  	 			$name = "";
  	 			$name .= $level ? TextFormat::GREEN : TextFormat::RED;
- 	 			$name .= $level->getName();
+ 	 			$name .= $level->getFolderName();
  	 			
  	 			
  	 			$player = TextFormat::WHITE.count($level->getPlayers());
@@ -105,7 +105,7 @@ class Main extends PluginBase implements Listener{
  	 		foreach ($this->getServer()->getLevelManager()->getLevels() as $level) {
  	 			$name = "";
  	 			$name .= $level ? TextFormat::GREEN : TextFormat::RED;
- 	 			$name .= $level->getName();
+ 	 			$name .= $level->getFolderName();
  	 			
  	 			
  	 			$player = TextFormat::WHITE.count($level->getPlayers());
