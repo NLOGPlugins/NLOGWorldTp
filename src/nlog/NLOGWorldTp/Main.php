@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener{
  	 			$sender->sendMessage($prefix."인게임 내에서 입력해주세요.");
  	 			return true;
  	 		}
- 	 		if ($args[0] == null) {
+ 	 		if (($args[0] ?? null) == null) {
  	 			$sender->sendMessage($prefix."/worldtp <월드명>");
  	 			return true;
  	 		}
@@ -63,7 +63,7 @@ class Main extends PluginBase implements Listener{
  	 			$sender->sendMessage($prefix."인게임 내에서 입력해주세요.");
  	 			return true;
  	 		}
- 	 		if ($args[0] == null) {
+ 	 		if (($args[0] ?? null) == null) {
  	 			$sender->sendMessage($prefix."/월드이동 <월드명>");
  	 			return true;
  	 		}
