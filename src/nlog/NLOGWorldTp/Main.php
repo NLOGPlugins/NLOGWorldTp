@@ -38,7 +38,7 @@ class Main extends PluginBase implements Listener{
  	 			return true;
  	 		}
  	 		
- 	 		$world = strtolower($args[0]);
+ 	 		$world = strtolower($args[0] ?? '');
  	 		
  	 		if ($this->getServer()->getLevelManager()->getLevelByName(strtolower($args[0])) == null) {
  	 			if (!file_exists($this->getServer()->getDataPath() . "worlds/" . $world)) {
@@ -68,7 +68,7 @@ class Main extends PluginBase implements Listener{
  	 			return true;
  	 		}
  	 		 
- 	 		$world = strtolower($args[0]);
+ 	 		$world = strtolower($args[0] ?? '');
  	 		 
  	 		if ($this->getServer()->getLevelManager()->getLevelByName(strtolower($args[0])) == null) {
  	 			if (!file_exists($this->getServer()->getDataPath() . "worlds/" . $world)) {
