@@ -15,7 +15,7 @@ class Main extends PluginBase implements Listener{
  	 public function onEnable(){
     	$this->getServer()->getPluginManager()->registerEvents($this, $this);
     	$this->getLogger()->notice("월드이동 플러그인");
-    	$this->getLogger()->info(TextFormat::AQUA . "Made by NLOG (nlog.kro.kr)");
+    	$this->getLogger()->info(TextFormat::AQUA . "Made by NLOG (pmmp.me)");
  	 }
  	 
  	 public function onCommand(CommandSender $sender,Command $cmd,string $label,array $args): bool {
@@ -40,19 +40,19 @@ class Main extends PluginBase implements Listener{
  	 		
  	 		$world = strtolower($args[0]);
  	 		
- 	 		if ($this->getServer()->getLevelByName(strtolower($args[0])) == null) {
+ 	 		if ($this->getServer()->getLevelManager()->getLevelByName(strtolower($args[0])) == null) {
  	 			if (!file_exists($this->getServer()->getDataPath() . "worlds/" . $world)) {
  	 				$sender->sendMessage($prefix."올바른 월드 이름을 입력해주세요.");
  	 				return true;
  	 			}else{
- 	 				$this->getServer()->loadLevel($world);
+ 	 				$this->getServer()->getLevelManager()->loadLevel($world);
  	 			}
  	 		}
  	 		
  	 		$name = $sender->getName();
  	 		$player = $this->getServer()->getPlayerExact($name);
  	 		
- 	 		$player->teleport($this->getServer()->getLevelByName($world)->getSafeSpawn());
+ 	 		$player->teleport($this->getServer()->getLevelManager()->getLevelByName($world)->getSafeSpawn());
  	 		$player->sendTip($prefix."월드 '".$world."' 으(로) 이동했습니다.");
  	 		
  	 	}
@@ -70,26 +70,26 @@ class Main extends PluginBase implements Listener{
  	 		 
  	 		$world = strtolower($args[0]);
  	 		 
- 	 		if ($this->getServer()->getLevelByName(strtolower($args[0])) == null) {
+ 	 		if ($this->getServer()->getLevelManager()->getLevelByName(strtolower($args[0])) == null) {
  	 			if (!file_exists($this->getServer()->getDataPath() . "worlds/" . $world)) {
  	 				$sender->sendMessage($prefix."올바른 월드 이름을 입력해주세요.\n/worldlist 나 /월드목록 으로 월드의 목록을 확인할 수 있습니다.");
  	 				return true;
  	 			}else{
- 	 				$this->getServer()->loadLevel($world);
+ 	 				$this->getServer()->getLevelManager()->loadLevel($world);
  	 			}
  	 		}
  	 		 
  	 		$name = $sender->getName();
  	 		$player = $this->getServer()->getPlayerExact($name);
  	 		 
- 	 		$player->teleport($this->getServer()->getLevelByName($world)->getSafeSpawn());
+ 	 		$player->teleport($this->getServer()->getLevelManager()->getLevelByName($world)->getSafeSpawn());
  	 		$player->sendTip($prefix."월드 '".$world."' 으(로) 이동했습니다.");
  	 		 
  	 	}
  	 	
  	 	if (strtolower($cmd) === "worldlist") {
 			
- 	 		foreach ($this->getServer()->getLevels() as $level) {
+ 	 		foreach ($this->getServer()->getLevelManager()->getLevels() as $level) {
  	 			$name = "";
  	 			$name .= $level ? TextFormat::GREEN : TextFormat::RED;
  	 			$name .= $level->getName();
@@ -102,7 +102,7 @@ class Main extends PluginBase implements Listener{
 		
 		if (strtolower($cmd) === "월드목록") {
 			
- 	 		foreach ($this->getServer()->getLevels() as $level) {
+ 	 		foreach ($this->getServer()->getLevelManager()->getLevels() as $level) {
  	 			$name = "";
  	 			$name .= $level ? TextFormat::GREEN : TextFormat::RED;
  	 			$name .= $level->getName();
